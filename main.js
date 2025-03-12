@@ -177,4 +177,7 @@ if (form) {
                 console.error("Error!", error.message);
             });
     });
+}function toggleMenu() {
+    const navbar = document.querySelector('.navbar');
+    navbar.classList.toggle('active');
 }
