@@ -229,8 +229,9 @@
           <img src="assets/mail-mavin.jpg" alt="Mail Mavin" />
           <div class="work-info">
             <p>
-              An email management application that helps users organize, filter,
-              and prioritize their emails using AI techniques.
+              MailMavin automates email management with AI-powered
+              summarization. It integrates Python, NLP, and WhatsApp for
+              streamlined communication workflows.
             </p>
             <a
               href="https://github.com/D3ATHCODER/Mail-Mavin"
@@ -303,7 +304,7 @@
           </div>
         </div>
         <div class="contact-form">
-          <form id="contactForm" onsubmit="submitForm(event)">
+          <form id="contactForm">
             <div class="input-box">
               <input type="text" name="name" placeholder="Full Name" required />
             </div>
@@ -325,6 +326,8 @@
             </div>
             <button type="submit" class="send-btn">Send Message</button>
           </form>
+          <div id="msg"></div>
+          <div id="msg2"></div>
         </div>
       </div>
     </section>
@@ -332,26 +335,6 @@
     <footer class="footer">
       <p>Made by D3THCODER with ❤️</p>
     </footer>
-
-    <script>
-      const scriptURL =
-        "https://script.google.com/macros/s/AKfycbyFfVTjN7gHXXTQivkOJnE5UlqnAuZxHx3v7EabjT-KOffyHyQxPH1JgAzmPYOEdbuI/exec";
-
-      function submitForm(event) {
-        event.preventDefault();
-
-        const form = document.getElementById("contactForm");
-        const formData = new FormData(form);
-
-        fetch(scriptURL, { method: "POST", body: formData })
-          .then((response) => response.text())
-          .then((data) => {
-            alert("Message sent successfully! ✅");
-            form.reset();
-          })
-          .catch((error) => console.error("Error:", error));
-      }
-    </script>
 
     <script src="main.js"></script>
   </body>
