@@ -170,7 +170,48 @@ if (form) {
                 console.error("Error!", error.message);
             });
     });
-}function toggleMenu() {
-    const navbar = document.querySelector('.navbar');
+}
+// Variables to store references to DOM elements
+const navbar = document.querySelector('.navbar');
+const hamburger = document.querySelector('.hamburger');
+let menuOpen = false;
+
+// Function to toggle the menu
+function toggleMenu() {
+    menuOpen = !menuOpen;
     navbar.classList.toggle('active');
 }
+
+// Add click event to hamburger button
+hamburger.addEventListener('click', function(event) {
+    event.stopPropagation(); // Prevent the click from bubbling to document
+    toggleMenu();
+});
+
+// Close menu when clicking anywhere else on the document
+document.addEventListener('click', function(event) {
+    // Check if menu is open and the click is outside the navbar
+    if (menuOpen && !navbar.contains(event.target) && event.target !== hamburger) {
+        menuOpen = false;
+        navbar.classList.remove('active');
+    }
+});
+
+// Optional: Close menu when window is resized beyond mobile breakpoint
+window.addEventListener('resize', function() {
+    if (window.innerWidth > 768 && menuOpen) {
+        menuOpen = false;
+        navbar.classList.remove('active');
+    }
+});
+
+// Optional: Close menu when a navbar link is clicked
+const navLinks = document.querySelectorAll('.navbar a');
+navLinks.forEach(link => {
+    link.addEventListener('click', function() {
+        if (window.innerWidth <= 768) {
+            menuOpen = false;
+            navbar.classList.remove('active');
+        }
+    });
+});

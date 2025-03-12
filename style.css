@@ -27,8 +27,8 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    height: 10%;
-    padding: 20px 10%;
+    height: auto; /* Changed from fixed 10% to auto */
+    padding: 8px 8%;
     background: rgba(168, 99, 99, 0.577);
     display: flex;
     justify-content: space-between;
@@ -59,10 +59,10 @@ body {
 .navbar a {
     position: relative;
     display: inline-block;
-    font-size: 24px;
+    font-size: 20px;
     color: rgb(231, 216, 216);
     text-decoration: none;
-    font-weight: 550;
+    font-weight: 500;
     margin-left: 35px;
     transition: .3s ease-in-out;
     opacity: 0;
@@ -95,10 +95,9 @@ body {
     color: white;
 }
 
-/* Hamburger Menu */
 .hamburger {
     display: none;
-    font-size: 24px;
+    font-size: 20px;
     cursor: pointer;
     color: #fff;
     margin-left: 20px;
@@ -112,9 +111,9 @@ body {
         display: none;
         flex-direction: column;
         width: 100%;
-        background: rgba(205, 203, 203, 0.577);
+        background: rgba(168, 99, 99, 0.577); /* Fixed to match desktop header color */
         position: absolute;
-        top: 60px;
+        top: 100%; /* Changed from fixed 60px to relative positioning */
         left: 0;
         padding: 10px 0;
     }
@@ -124,6 +123,7 @@ body {
     .navbar a {
         margin: 10px 0;
         text-align: center;
+        font-size: 18px; /* Smaller font size for mobile */
     }
 }
 
@@ -134,7 +134,6 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-right: 500px;
     padding: 70px 10% 0;
     z-index: 10;
 }
@@ -147,8 +146,13 @@ body {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    margin-right: 400px;
     margin-bottom: 50px;
+}
+
+@media (min-width: 769px) {
+    .home-content {
+        margin-right: 400px;
+    }
 }
 
 .home-content h3 {
@@ -158,7 +162,12 @@ body {
     opacity: 0;
     animation: slideBottom 1s ease forwards;
     animation-delay: .7s;
-    margin-right: 550px;
+}
+
+@media (min-width: 769px) {
+    .home-content h3 {
+        margin-right: 550px;
+    }
 }
 
 .home-content h3:nth-of-type(2) {
@@ -190,11 +199,17 @@ body {
 .home-img {
     width: 300px;
     height: 300px;
-    position: absolute;
-    margin-left: 550px;
+    position: relative; /* Changed from absolute to relative for better mobile layout */
     opacity: 0;
     animation: zoomIn 1s ease forwards, floatImage 4s ease-in-out infinite;
     animation-delay: 2s, 3s;
+}
+
+@media (min-width: 769px) {
+    .home-img {
+        position: absolute;
+        margin-left: 550px;
+    }
 }
 
 .home-img img {
@@ -213,6 +228,15 @@ body {
     position: relative;
     z-index: 50;
     margin-top: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+@media (min-width: 769px) {
+    .home-sci {
+        justify-content: flex-start;
+    }
 }
 
 .home-sci a, .profile-links a {
@@ -234,13 +258,14 @@ body {
     opacity: 0;
     animation: slideLeft 1s ease forwards;
     animation-delay: calc(.2s * var(--i));
-    margin: 0 25px 0 0;
+    margin: 0 15px 15px 0;
 }
 
 .profile-links a {
     width: 45px;
     height: 45px;
     font-size: 22px;
+    margin: 0 10px 10px 0;
 }
 
 .home-sci a:hover, .profile-links a:hover {
@@ -349,6 +374,7 @@ section {
     border: 3px solid orangered;
     box-shadow: 0 0 20px orangered;
     transition: transform 0.5s;
+    margin: 0 auto; /* Center image on mobile */
 }
 
 .about-img:hover {
@@ -364,6 +390,13 @@ section {
 .about-content {
     flex: 1;
     max-width: 600px;
+    text-align: center; /* Center text on mobile */
+}
+
+@media (min-width: 769px) {
+    .about-content {
+        text-align: left; /* Left align on desktop */
+    }
 }
 
 .about-content h2 {
@@ -385,6 +418,15 @@ section {
 
 .coding-profiles {
     margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center on mobile */
+}
+
+@media (min-width: 769px) {
+    .coding-profiles {
+        align-items: flex-start; /* Left align on desktop */
+    }
 }
 
 .coding-profiles h2 {
@@ -395,6 +437,14 @@ section {
 .profile-links {
     display: flex;
     gap: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center; /* Center on mobile */
+}
+
+@media (min-width: 769px) {
+    .profile-links {
+        justify-content: flex-start; /* Left align on desktop */
+    }
 }
 
 .education {
@@ -588,6 +638,7 @@ section {
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    align-items: center; /* Center on mobile */
 }
 
 .contact-card {
@@ -598,12 +649,23 @@ section {
     text-align: center;
     transition: 0.5s ease;
     height: 130px;
-    width: 330px;
+    width: 100%; /* Use full width on mobile */
+    max-width: 330px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-left: 120px;
+    margin: 0 auto; /* Center horizontally */
+}
+
+@media (min-width: 769px) {
+    .contact-info {
+        align-items: flex-start; /* Left align on desktop */
+    }
+    
+    .contact-card {
+        margin-left: 120px;
+    }
 }
 
 .contact-card:hover {
@@ -629,7 +691,15 @@ section {
     border: 2px solid orangered;
     border-radius: 1rem;
     padding: 1.2rem;
-    margin-right: 80px;
+    margin: 0 auto; /* Center on mobile */
+    max-width: 100%;
+}
+
+@media (min-width: 769px) {
+    .contact-form {
+        margin-right: 80px;
+        margin-left: 0;
+    }
 }
 
 .input-box {
@@ -680,7 +750,7 @@ section {
         font-size: 18px;
     }
     .heading {
-        font-size: 3rem;
+        font-size: 2.5rem;
     }
     section {
         padding: 100px 5% 60px;
@@ -689,75 +759,113 @@ section {
 
 @media (max-width: 768px) {
     .header {
-        padding: 10px 5%;
-        flex-direction: column;
+        padding: 15px 5%;
+        height: auto;
+        justify-content: space-between; /* Keep header items spaced on mobile */
         align-items: center;
-        text-align: center;
     }
-    .navbar {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        margin-top: 15px;
+    
+    /* Fixed hamburger menu positioning */
+    .hamburger {
+        margin-left: auto; /* Push to right side */
     }
-    .navbar a {
-        font-size: 16px;
-        margin: 10px;
-    }
+    
     .home {
-        flex-direction: column-reverse;
+        flex-direction: column;
         text-align: center;
+        padding-top: 100px; /* Add more space from header */
     }
+    
     .home-content {
-        margin-top: 50px;
+        align-items: center; /* Center content on mobile */
+        margin-right: 0;
+        margin-top: 0;
     }
+    
+    .home-img {
+        margin: 30px auto;
+    }
+    
     .home-content h1 {
         font-size: 35px;
     }
+    
     .home-content h3 {
         font-size: 24px;
+        margin-right: 0;
+        width: 100%;
     }
+    
     .home-content p {
         font-size: 16px;
+        text-align: center;
     }
+    
     .btn-box {
         padding: 10px 20px;
         font-size: 14px;
     }
+    
     .heading {
         font-size: 2.5rem;
     }
+    
     .about-container {
-        flex-direction: column-reverse;
+        flex-direction: column;
         text-align: center;
     }
+    
+    .education-box, .work-box {
+        width: 100%;
+        max-width: 100%;
+    }
+    
     .contact-container {
         flex-direction: column;
+        align-items: center;
     }
 }
 
 @media (max-width: 480px) {
+    .header {
+        padding: 10px 5%;
+    }
+    
     .home-content h1 {
         font-size: 30px;
     }
+    
     .home-content h3 {
         font-size: 22px;
     }
+    
     .home-content p {
         font-size: 14px;
     }
+    
     .btn-box {
         padding: 8px 18px;
         font-size: 12px;
     }
+    
     .heading {
         font-size: 2rem;
     }
+    
     .home-img, .about-img {
         width: 250px;
         height: 250px;
     }
-    .education-box, .skill-box {
-        min-width: 100%;
+    
+    /* Make skill boxes fit mobile better */
+    .skill-box {
+        flex: 0 0 130px;
+        height: 180px;
+    }
+    
+    /* Improve spacing for contact cards */
+    .contact-card {
+        width: 100%;
+        margin-left: 0;
     }
 }
