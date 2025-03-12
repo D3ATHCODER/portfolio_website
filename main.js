@@ -58,13 +58,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
-var typed = new Typed(".text", {
-    strings: ["Software Developer", "Web Developer", "Worthy Coder", "Programmer Analyst"],
-    typeSpeed: 60,
-    backSpeed: 50,
-    backDelay: 2000,
-    loop: true
-});
 
 document.addEventListener('DOMContentLoaded', function() {
     const sections = document.querySelectorAll('section');
@@ -95,7 +88,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // For the typing animation
 document.addEventListener('DOMContentLoaded', function() {
     var typed = new Typed(".text", {
-        strings: ["Frontend Developer", "Web Developer", "Student"],
+        strings: ["Software Developer", "Web Developer", "Worthy Coder", "Programmer Analyst"],
         typeSpeed: 100,
         backSpeed: 100,
         backDelay: 1000,
